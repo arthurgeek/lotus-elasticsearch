@@ -1,6 +1,7 @@
 require "elasticsearch"
 require "lotus/model/adapters/abstract"
 require "lotus/model/adapters/implementation"
+require "lotus/model/adapters/elasticsearch/query"
 require "lotus/model/adapters/elasticsearch/command"
 require "lotus/model/adapters/elasticsearch/collection"
 
@@ -46,6 +47,12 @@ module Lotus
         def command(collection)
           Elasticsearch::Command.new(
             _collection(collection), _mapped_collection(collection)
+          )
+        end
+
+        def query(collection, context = nil, &blk)
+          Elasticsearch::Query.new(
+            _collection(collection), _mapped_collection(collection), &blk
           )
         end
 

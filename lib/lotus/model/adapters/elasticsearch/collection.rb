@@ -1,4 +1,5 @@
 require "securerandom"
+require "lotus/utils/hash"
 
 module Lotus
   module Model
@@ -36,6 +37,16 @@ module Lotus
             )
           end
 
+          def search(query)
+            response = @client.search(
+              index: "index_name",
+              type: @name,
+              body: { query: _build_query(query) }
+            )
+
+            _deserialize_response(response)
+          end
+
           private
 
           def _index(id, entity)
@@ -45,6 +56,22 @@ module Lotus
               id: id,
               body: entity
             )
+          end
+
+          def _deserialize_response(response)
+            response["hits"]["hits"].map { |item| _deserialize_item(item) }
+          end
+
+          def _deserialize_item(item)
+            Lotus::Utils::Hash.new(item["_source"]).symbolize!
+          end
+
+          def _build_query(query)
+            if query.empty?
+              { match_all: {}}
+            else
+              { match: query }
+            end
           end
         end
       end
