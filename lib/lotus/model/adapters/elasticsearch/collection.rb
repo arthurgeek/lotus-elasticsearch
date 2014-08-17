@@ -19,7 +19,7 @@ module Lotus
           end
 
           def update(entity)
-            _index(entity[:uuid], entity)
+            _index(entity[@identity], entity)
           end
 
           def delete(entity)
