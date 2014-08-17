@@ -6,8 +6,8 @@ module Lotus
     module Adapters
       module Elasticsearch
         class Collection
-          def initialize(client, name, identity)
-            @client, @name, @identity = client, name, identity
+          def initialize(client, index, name, identity)
+            @client, @index, @name, @identity = client, index, name, identity
           end
 
           def create(entity)
@@ -24,7 +24,7 @@ module Lotus
 
           def delete(entity)
             @client.delete(
-              index: "index_name",
+              index: @index,
               type: @name,
               id: entity.id
             )
@@ -32,14 +32,14 @@ module Lotus
 
           def clear
             @client.indices.delete_mapping(
-              index: "index_name",
+              index: @index,
               type: @name
             )
           end
 
           def search(query)
             response = @client.search(
-              index: "index_name",
+              index: @index,
               type: @name,
               body: { query: _build_query(query) }
             )
@@ -51,7 +51,7 @@ module Lotus
 
           def _index(id, entity)
             @client.index(
-              index: "index_name",
+              index: @index,
               type: @name,
               id: id,
               body: entity

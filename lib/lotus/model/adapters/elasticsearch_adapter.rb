@@ -11,10 +11,11 @@ module Lotus
       class ElasticsearchAdapter < Abstract
         include Implementation
 
-        def initialize(mapper, host)
-          super
+        def initialize(mapper, index, host)
+          super(mapper)
 
           @client = ::Elasticsearch::Client.new(host: host)
+          @index = index
 
           @collections = {}
         end
@@ -60,7 +61,7 @@ module Lotus
 
         def _collection(name)
           @collections[name] ||= Elasticsearch::Collection.new(
-            @client, name, _identity(name)
+            @client, @index, name, _identity(name)
           )
         end
       end
