@@ -9,6 +9,7 @@ This is a POC, not production-ready. Work still in progress.
 ## Status
 
 [![Build Status](https://secure.travis-ci.org/arthurgeek/lotus-elasticsearch.svg?branch=master)](http://travis-ci.org/arthurgeek/lotus-elasticsearch?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/arthurgeek/lotus-elasticsearch.svg)](https://coveralls.io/r/arthurgeek/lotus-elasticsearch)
 
 ## Installation
 
