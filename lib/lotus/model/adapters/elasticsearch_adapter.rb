@@ -11,7 +11,7 @@ module Lotus
       class ElasticsearchAdapter < Abstract
         include Implementation
 
-        def initialize(mapper, index, host)
+        def initialize(mapper, index, host="localhost:9200")
           super(mapper)
 
           @client = ::Elasticsearch::Client.new(host: host)
