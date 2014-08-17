@@ -28,6 +28,7 @@ module Lotus
             self
           end
           alias_method :where, :search
+          alias_method :and, :search
 
           private
 
