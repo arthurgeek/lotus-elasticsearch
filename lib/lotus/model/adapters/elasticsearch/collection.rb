@@ -31,9 +31,10 @@ module Lotus
           end
 
           def clear
-            @client.indices.delete_mapping(
+            @client.delete_by_query(
               index: @index,
-              type: @name
+              type: @name,
+              q: "*"
             )
           end
 
