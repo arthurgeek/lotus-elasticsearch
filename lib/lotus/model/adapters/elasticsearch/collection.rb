@@ -47,10 +47,10 @@ module Lotus
             response = @client.search(
               index: @index,
               type: @name,
-              body: { query: _build_query(query) }
+              q: _build_query(query)
             )
 
-            _deserialize_response(response)
+            _deserialize_search_response(response)
           end
 
           private
@@ -64,7 +64,7 @@ module Lotus
             )
           end
 
-          def _deserialize_response(response)
+          def _deserialize_search_response(response)
             response["hits"]["hits"].map { |item| _deserialize_item(item) }
           end
 
@@ -74,9 +74,9 @@ module Lotus
 
           def _build_query(query)
             if query.empty?
-              { match_all: {}}
+              "*"
             else
-              { match: query }
+              query.map { |key,value| "#{key}:\"#{value}\"" }.join(" AND ")
             end
           end
         end
