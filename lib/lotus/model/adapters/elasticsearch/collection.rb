@@ -38,6 +38,24 @@ module Lotus
             )
           end
 
+          def get(id)
+            # `Elasticsearch::Client#get` can't be called with a `nil` id
+            if id
+              response = @client.get(
+                index: @index,
+                type: @name,
+                id: id
+              )
+
+              _deserialize_item(response)
+            else
+              nil
+            end
+          rescue ::Elasticsearch::Transport::Transport::Errors::NotFound
+            # we must return `nil` when the document was not found
+            nil
+          end
+
           def search(query)
             # before using `search` we issue a `refresh` to given `index`
             # so all operations performed since the last `refresh` are

@@ -37,6 +37,10 @@ module Lotus
           command(collection).clear
         end
 
+        def find(collection, id)
+          command(collection).get(id)
+        end
+
         def first(collection)
           raise NotImplementedError
         end

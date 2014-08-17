@@ -27,10 +27,18 @@ module Lotus
             @dataset.clear
           end
 
+          def get(id)
+            _deserialize([@dataset.get(id)].compact).first
+          end
+
           private
 
           def _serialize(entity)
             @collection.serialize(entity)
+          end
+
+          def _deserialize(records)
+            @collection.deserialize(records)
           end
         end
       end
