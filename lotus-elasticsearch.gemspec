@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 4.0"
   spec.add_development_dependency "turn"
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "coveralls"
 end
