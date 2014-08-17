@@ -1,5 +1,9 @@
 language: ruby
-script: "bundle exec rake test:coverage"
+
+branches:
+  only:
+    - master
+
 rvm:
   - 2.0.0
   - 2.1.0
@@ -10,3 +14,8 @@ rvm:
 matrix:
   allow_failures:
     - rvm: rbx-2
+
+jdk:
+  - openjdk7
+
+script: "TEST_CLUSTER_COMMAND=/usr/share/elasticsearch/bin/elasticsearch bundle exec rake test:coverage"
