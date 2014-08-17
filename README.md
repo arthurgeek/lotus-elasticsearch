@@ -11,6 +11,7 @@ This is a POC, not production-ready. Work still in progress.
 [![Build Status](https://secure.travis-ci.org/arthurgeek/lotus-elasticsearch.svg?branch=master)](http://travis-ci.org/arthurgeek/lotus-elasticsearch?branch=master)
 [![Coverage Status](https://img.shields.io/coveralls/arthurgeek/lotus-elasticsearch.svg)](https://coveralls.io/r/arthurgeek/lotus-elasticsearch)
 [![Code Climate](https://codeclimate.com/github/arthurgeek/lotus-elasticsearch/badges/gpa.svg)](https://codeclimate.com/github/arthurgeek/lotus-elasticsearch)
+[![Dependency Status](https://gemnasium.com/arthurgeek/lotus-elasticsearch.svg)](https://gemnasium.com/arthurgeek/lotus-elasticsearch)
 
 ## Installation
 
