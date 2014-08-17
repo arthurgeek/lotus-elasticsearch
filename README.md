@@ -6,6 +6,10 @@ It is built using `Elasticsearch::Client`, which is part of `elasticsearch` gem.
 
 This is a POC, not production-ready. Work still in progress.
 
+## Status
+
+[![Build Status](https://secure.travis-ci.org/arthurgeek/lotus-elasticsearch.svg?branch=master)](http://travis-ci.org/arthurgeek/lotus-elasticsearch?branch=master)
+
 ## Installation
 
 Add this line to your application's Gemfile:
