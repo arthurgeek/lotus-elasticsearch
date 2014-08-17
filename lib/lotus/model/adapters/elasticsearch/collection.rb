@@ -39,6 +39,11 @@ module Lotus
           end
 
           def search(query)
+            # before using `search` we issue a `refresh` to given `index`
+            # so all operations performed since the last `refresh` are
+            # available for search
+            @client.indices.refresh index: @index
+
             response = @client.search(
               index: @index,
               type: @name,
